@@ -1,0 +1,19 @@
+<div class="row animated fadeIn">
+    <div class="col">
+        <input type="text" #termino (keyup)="buscar(termino.value)" placeholder="Buscar artista, cancion, genero..." class="form-control" >
+    </div>
+</div>
+
+<app-loading *ngIf="loading" class="m-5"></app-loading>
+
+<div class="row animated fadeIn m-5">
+    <div class="card puntero" style="width: 18rem;" *ngFor="let artist of artists">
+        <img [src]="artist.images | noimage " class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"><p>{{artist.name}}</p></h5>
+            <p class="card-text">{{artist.artists[0].name}}</p>
+
+        </div>
+    </div>
+</div>
+
