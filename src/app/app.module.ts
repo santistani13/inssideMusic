@@ -13,6 +13,7 @@ import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { FavoritasComponent } from './components/favoritas/favoritas.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { NoimagePipe } from './pipes/noimage.pipe';
+import { ArtistapageComponent } from './components/artistapage/artistapage.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     FavoritasComponent,
     LoadingComponent,
     NoimagePipe,
+    ArtistapageComponent,
 
   ],
   imports: [

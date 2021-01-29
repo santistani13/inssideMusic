@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { MusicService } from '../../services/music.service';
 
@@ -9,7 +10,8 @@ import { MusicService } from '../../services/music.service';
 export class SearchComponent implements OnInit {
 artists: any [] =[];
 loading: boolean ; 
-  constructor( private ms: MusicService ) { 
+
+  constructor( private ms: MusicService) { 
     this.loading = false;
   }
 
@@ -25,5 +27,6 @@ loading: boolean ;
     });
     
   }
+
 
 }
