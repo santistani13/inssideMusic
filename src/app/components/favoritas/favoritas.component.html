@@ -1,11 +1,11 @@
-<h1>Canciones favoritas</h1>
+<h1 class="animated fadeIn">Canciones favoritas</h1>
 
 
-<div class="row m-5">
+<div class="row animated fadeIn m-5">
     <div class="col">
-        <table class="table">
+        <table class="table col">
             <thead>
-                <tr>
+                <tr >
                     <th>Foto</th>
                     <th>Album</th>
                     <th>Cancion</th>
@@ -14,15 +14,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr >
+                <tr *ngFor="let track of tracks; let i = index">
                     <th>
-                        <img>
+                        <img [src]="track.album.images | noimage " class="img-thumb" > 
                     </th>
-                    <th></th>
-                    <th></th>
-                    <th>
+                    <th> {{ track.album.name }} </th>
+                    <th>{{ track.name }}</th>
+                    <th><iframe [src]="track.uri | domSeguro:'https://open.spotify.com/embed?uri='" width="300"
+                        height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </th>
-                    <th> <button class="btn btn-outline-danger" >Eliminar</button> </th>
+                    <th> <button (click)="eliminarCancion(i)" class="btn btn-outline-danger" >Eliminar</button> </th>
                 </tr>
 
             </tbody>

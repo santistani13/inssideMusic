@@ -21,6 +21,7 @@
                     <th>Album</th>
                     <th>Cancion</th>
                     <th>Vista previa</th>
+                    <th>Agregar a favoritos</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,8 +31,10 @@
                     </th>
                     <th>{{ track.album.name }}</th>
                     <th>{{ track.name }}</th>
-                    <th>
+                    <th> <iframe [src]="track.uri | domSeguro:'https://open.spotify.com/embed?uri='" width="300"
+                        height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </th>
+                    <th>  <button (click)="agregarAFavoritos( track )" class="btn btn-outline-success"><i class="fas fa-plus"></i> Agregar a favoritos</button> </th>
                 </tr>
 
             </tbody>

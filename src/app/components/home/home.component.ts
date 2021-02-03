@@ -10,13 +10,15 @@ import { MusicService } from 'src/app/services/music.service';
 export class HomeComponent implements OnInit {
 
   nuevasCanciones: any [] = [] 
-  loading: boolean ;
+  loading: boolean = true; ;
 
   constructor( private ms: MusicService ) { 
-    this.loading = true;
-    this.ms.getNewReleases().subscribe(  data  => {
+    this.ms.getToken().subscribe( d => {
+console.log(d);
+this.ms.getNewReleases().subscribe(  data  => {
   this.nuevasCanciones = data;
   this.loading = false;
+    })
     } )
     
   }

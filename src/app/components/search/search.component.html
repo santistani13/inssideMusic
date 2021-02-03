@@ -1,20 +1,64 @@
-<div class="row animated fadeIn">
+<h1>Elegir busqueda</h1>
+<div class="animated fadeIn m-5 col col-10">
+
+    <select #t (change)="elegirCat( t.value )" class="cajaCategoria" name="categoria">
+        <option value="">Elija una opcion</option>
+        <option *ngFor="let ls of lista" [value]="ls"> {{ls}} </option>
+    </select>
+
+
+</div>
+
+<div class="row animated fadeIn col col-10">
+
     <div class="col">
-        <input type="text" #termino (keyup)="buscar(termino.value)" placeholder="Buscar artista, cancion, genero..." class="form-control" >
+        <input type="text" #termino (keyup)="buscar(termino.value)" placeholder="Buscar..." class="form-control">
     </div>
 </div>
 
 <app-loading *ngIf="loading" class="m-5"></app-loading>
-<!--
-<div class="row animated fadeIn m-5">
-    <div  (click)="verArtista( item )" class="card puntero" style="width: 18rem;" *ngFor="let artist of artists">
-        <img [src]="artist.images | noimage " class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title"><p>{{artist.name}}</p></h5>
-     
+
+<app-tarjeta  *ngIf="tarjetas" [items]="artists"></app-tarjeta>
+
+<div class="animated fadeIn" *ngIf="canciones">
+    <div class="row m-5">
+        <div class="col">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Cancion</th>
+                        <th scope="col">Vista previa</th>
+                        <th scope="col">Agregar a favoritos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let track of tracks" scope="row">
+                        <th>
+                            <img [src]="track.album.images | noimage" class="img-thumb">
+                        </th>
+                        <th>{{ track.album.name }}</th>
+                        <th>{{ track.name }}</th>
+                        <th><iframe [src]="track.uri | domSeguro:'https://open.spotify.com/embed?uri='" width="300"
+                                height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        </th>
+                        <th> <button (click)="agregarAFavoritos( track )" class="btn btn-outline-success"><i class="fas fa-plus"></i> Agregar a
+                                favoritos</button> </th>
+                    </tr>
+
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
--->
-<app-tarjeta *ngIf="!loading" [items]="artists" ></app-tarjeta>
+<div class="row animated fadeIn m-5" *ngIf="generos" >
+    <div  class="card puntero" style="width: 18rem;" *ngFor="let playlist of playlists">
+        <img [src]="playlist.images | noimage" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"><p>{{playlist.name}}</p></h5>
+           
+         <<!--  <button class="btn btn-outline-success"><i class="fas fa-plus"></i> Agregar a favoritos</button>
+        </div> -->  
+    </div>
+</div>

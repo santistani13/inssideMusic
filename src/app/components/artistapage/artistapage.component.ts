@@ -11,6 +11,7 @@ export class ArtistapageComponent implements OnInit {
 
   loading: boolean; 
   artista : any = {};
+  track: any = {};  
   topTracks: any [] = []; 
 
   constructor( private router: ActivatedRoute,
@@ -39,6 +40,10 @@ export class ArtistapageComponent implements OnInit {
       console.log( topTracks );
       this.topTracks = topTracks;
     })
+  }
+  agregarAFavoritos( track:any ){
+    this.ms.addFav(track);
+    console.log(track);
   }
 
 }
